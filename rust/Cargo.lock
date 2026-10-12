@@ -107,7 +107,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "tokenizer"
+name = "tokeniser"
 version = "0.1.0"
 
 [[package]]

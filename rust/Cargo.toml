@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["tokenizer", "model", "train", "bench", "cli", "dataset"]
+members = ["tokeniser", "model", "train", "bench", "cli", "dataset"]
 
 [profile.release]
 lto = "fat"
