@@ -1,5 +1,4 @@
 import json
-import os
 import sys
 import re
 from pathlib import Path
@@ -21,7 +20,7 @@ def main(file_path: Path):
     
     jsonl_name = file_path.stem + ".jsonl"
     
-    writer(split_records=deduped_records, jsonl_name=jsonl_name)
+    writer(records=deduped_records, jsonl_name=jsonl_name)
 
 
 def reader(file_path: Path) -> list[str]:
