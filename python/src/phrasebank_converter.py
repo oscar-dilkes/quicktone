@@ -15,13 +15,13 @@ def main(file_path: Path):
     print(f"Relative file path is '{file_path}'")
     
     data: list[str] = reader(file_path=file_path)
-    merged_values_data: list[str] = merge_values(data=data)
-    split_records: list[dict] = split(data=merged_values_data)
+    merged_values_records: list[str] = merge_values(data=data)
+    split_records: list[dict] = split(data=merged_values_records)
     deduped_records: list[dict] = dedupe(records=split_records)
     
     jsonl_name = file_path.stem + ".jsonl"
     
-    writer(split_records=split_records, jsonl_name=jsonl_name)
+    writer(split_records=deduped_records, jsonl_name=jsonl_name)
 
 
 def reader(file_path: Path) -> list[str]:
@@ -69,13 +69,13 @@ def dedupe(records: list[dict]) -> list[dict]:
     return out
 
 
-def writer(split_records: list[dict], jsonl_name: Path):
+def writer(records: list[dict], jsonl_name: Path):
     print("Writing JSONL...")
     
     jsonl_path = _BASE_PATH / "jsonl" / jsonl_name
     
     with open(jsonl_path, "w", encoding="utf-8") as file:
-        for record in split_records:
+        for record in records:
             file.write(json.dumps(record, ensure_ascii=False) + "\n")
             
     print(f"JSONL written to '{jsonl_path}'")
