@@ -8,7 +8,7 @@ from pathlib import Path
 _BASE_PATH = Path("../../data")
 _SPLIT_DECIMAL = re.compile(r"(\d) \.(\d)")
 _SPLIT_THOUSANDS = re.compile(r"(\d) ,(\d{3})\b")
-_UNICODE_EUrO = re.compile(r"x20ac")
+_UNICODE_EURO = re.compile(r"x20ac")
 
 
 def main(file_path: Path):
@@ -34,7 +34,7 @@ def reader(file_path: Path) -> list[str]:
 def merge_values(data: list[str]) -> list[str]:
     data = [_SPLIT_DECIMAL.sub(r"\1.\2", line) for line in data]
     data = [_SPLIT_THOUSANDS.sub(r"\1,\2", line) for line in data]
-    data = [_UNICODE_EUrO.sub(r"€", line) for line in data]
+    data = [_UNICODE_EURO.sub(r"€", line) for line in data]
     
     return data
     
