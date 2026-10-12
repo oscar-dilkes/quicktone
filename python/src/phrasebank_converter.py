@@ -1,6 +1,6 @@
 import json
-import sys
 import re
+import sys
 from pathlib import Path
 
 
@@ -74,8 +74,7 @@ def writer(records: list[dict], jsonl_name: Path):
     jsonl_path = _BASE_PATH / "jsonl" / jsonl_name
     
     with open(jsonl_path, "w", encoding="utf-8") as file:
-        for record in records:
-            file.write(json.dumps(record, ensure_ascii=False) + "\n")
+        file.writelines(json.dumps(record, ensure_ascii=False) + "\n" for record in records)
             
     print(f"JSONL written to '{jsonl_path}'")
     
