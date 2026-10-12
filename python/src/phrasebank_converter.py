@@ -12,7 +12,7 @@ _UNICODE_EURO = re.compile(r"x20ac")
 
 
 def main(file_path: Path):
-    print(f"relative file path is '{file_path}'")
+    print(f"Relative file path is '{file_path}'")
     
     data: list[str] = reader(file_path=file_path)
     merged_values_data: list[str] = merge_values(data=data)
@@ -25,7 +25,7 @@ def main(file_path: Path):
 
 
 def reader(file_path: Path) -> list[str]:
-    print("reading file...")
+    print("Reading file...")
     
     with open(file_path, "r", encoding="latin-1") as file:
         return file.readlines()
